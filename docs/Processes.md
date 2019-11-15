@@ -483,7 +483,11 @@ The modifications from the standard tick.q include:
 -   Allows configuration of timezones for timestamping data and performing
     end of day rollover (see [eodtime.q](utilities/#eodtimeq));
 
-The tickerplant log file will be written to hdb/database.
+The tickerplant log file will be written to the location passed by the flag -tplogdir.
+If no flag is passed, the tickerplant log would not be saved. 
+For example, -tplogdir ${KDBTPLOG} would save tickerplant logs to the location defined by the KDBTPLOG environment variable.
+
+
 
 <a name="rdb"></a>
 
