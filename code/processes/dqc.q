@@ -150,7 +150,10 @@ runcheck:{[runtype;idnum;fn;params;rs]                                          
   if[not fncheck[2] in key value .Q.dd[`;fncheck 1];                                                            /- run check to make sure passed in function exists
     .lg.e[`runcheck;"Function ",(string fn)," doesn't exist"];
     :()];
+  runchecktorq[runtype;idnum;fn;params;rs];
+  }
 
+runchecktorq:{[runtype;idnum;fn;params;rs]
   rs:(),rs;                                                                                                     /- set rs to a list
   h:.dqe.gethandles[rs];
   r:.dqe.fillprocname[rs;h];
