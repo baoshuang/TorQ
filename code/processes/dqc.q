@@ -150,9 +150,18 @@ runcheck:{[runtype;idnum;fn;params;rs]                                          
   if[not fncheck[2] in key value .Q.dd[`;fncheck 1];                                                            /- run check to make sure passed in function exists
     .lg.e[`runcheck;"Function ",(string fn)," doesn't exist"];
     :()];
-  $[-7=type rs;runcheckdb[runtype;idnum;fn;params;rs];runchecktorq[runtype;idnum;fn;params;rs]]
+  $[-7=type rs;runcheckdb[runtype;idnum;fn;params;rs];runchecktorq[runtype;idnum;fn;params;rs]]                 /- determine if rs is a port to run seperate functions
   }
 
+runcheckdb{[runtype;idnum;fn;params;rs]                                                                         /- fucntion to run checks on non TorQ dbs
+  h:hopen rs;
+  r:`otherdb`otherdb1;
+  .lg.o[`runcheck;"Checking if comparison check"];
+  if[not params`comp;
+    .dqe.initstatusupd[runtype;idnum;fn;params]]'[r];                                                           /- will have to check dupchk
+
+  ];
+  }
 runchecktorq:{[runtype;idnum;fn;params;rs]
   rs:(),rs;                                                                                                     /- set rs to a list
   h:.dqe.gethandles[rs];
